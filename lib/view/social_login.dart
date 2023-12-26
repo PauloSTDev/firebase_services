@@ -59,7 +59,7 @@ class _SocialLoginState extends State<SocialLogin> {
         ),
         TextButton(
             style: TextButton.styleFrom(backgroundColor: Colors.grey[100]),
-            onPressed: () {},
+            onPressed: () => authNetwork.signInWithTwitter(),
             child: const Text('Twitter', style: TextStyle(color: Colors.blue))),
       ],
     );
@@ -82,11 +82,12 @@ class _SocialLoginState extends State<SocialLogin> {
           children: [
             const Text('SignOut', style: TextStyle(color: Colors.red)),
             IconButton(
-                onPressed: () => _auth.signOut(),
-                icon: const Icon(
-                  Icons.exit_to_app,
-                  color: Colors.red,
-                )),
+              onPressed: () => _auth.signOut(),
+              icon: const Icon(
+                Icons.exit_to_app,
+                color: Colors.red,
+              ),
+            ),
           ],
         )
       ],

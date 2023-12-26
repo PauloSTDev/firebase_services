@@ -1,5 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_services/view/home_view.dart';
+import 'package:firebase_services/view/social_login.dart';
 import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
