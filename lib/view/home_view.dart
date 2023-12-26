@@ -10,16 +10,17 @@ class SocialLogin extends StatefulWidget {
 }
 
 class _SocialLoginState extends State<SocialLogin> {
-  final AuthNetwork authNetwork = AuthNetwork();
-  final _auth = AuthNetwork().getAuth();
-
   User? user;
+  final AuthNetwork authNetwork = AuthNetwork();
+  final _auth = AuthNetwork().getAuthGoogle();
+  String titleLogin = '';
 
   @override
   void initState() {
     _auth.authStateChanges().listen((event) {
       setState(() {
         user = event;
+        titleLogin = authNetwork.getTitleSocialLogin();
       });
     });
     super.initState();
@@ -53,7 +54,7 @@ class _SocialLoginState extends State<SocialLogin> {
         ),
         TextButton(
           style: TextButton.styleFrom(backgroundColor: Colors.grey[100]),
-          onPressed: () {},
+          onPressed: () => authNetwork.signInWithFacebook(),
           child: const Text('Facebook', style: TextStyle(color: Color.fromARGB(255, 14, 75, 187))),
         ),
         TextButton(
@@ -70,9 +71,9 @@ class _SocialLoginState extends State<SocialLogin> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text('Google signedIn', style: TextStyle(color: Colors.green)),
-            Icon(Icons.check_box, color: Colors.green),
+          children: [
+            Text('${authNetwork.getTitleSocialLogin()} Login', style: const TextStyle(color: Colors.green)),
+            const Icon(Icons.check_box, color: Colors.green),
           ],
         ),
         const SizedBox(height: 20),
