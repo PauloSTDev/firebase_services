@@ -6,4 +6,5 @@ abstract class IAuthNetwork {
   Future<UserCredential> signInWithFacebook();
   Future<UserCredential> signInWithTwitter();
   String getTitleSocialLogin();
+  Future<void> signInWithApple();
 }
